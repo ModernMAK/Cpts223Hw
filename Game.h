@@ -13,37 +13,55 @@
 class Game
 {
 public:
-	Game(bool useList, int M, int N);
+	Game(AbstractJosephus* josephus);
 	~Game();
 	void init(int N, int M);
 	void clear();
-
-	//	prints the number of people still playing the game (i.e., not yet eliminated) 
 	int currentSize();
-
-	//	returns true if circle is empty
 	bool isEmpty();
-
-	// eliminates the next person as per the game's rule
 	Person eliminateNext();
-
-	// prints the current content of circle in sequence starting from the person with the least position number
-	void printAll();
-
-	// any other member functions of your choice
-	// ....
-	int eliminatedIndex();
-	void play(bool printRounds = true);
+	Person timeEliminateNext(double * elimTime);
+	virtual void printAll();
+	void play();
 	void reset();
-	int currentRound();
-	double time();
-	int startPlayers();
-	int startPasses();
-
+	void reset(int N, int M);
+	double timePlay(int * eliminations);
 private:
-	VectorMyJosephus vector;
-	ListMyJosephus list;
-	bool useList;
+	AbstractJosephus * gameInterface;
+
+//	Game(bool useList, int M, int N);
+//	~Game();
+//	void init(int N, int M);
+//	void clear();
+//
+//	//	prints the number of people still playing the game (i.e., not yet eliminated) 
+//	int currentSize();
+//
+//	//	returns true if circle is empty
+//	bool isEmpty();
+//
+//	// eliminates the next person as per the game's rule
+//	Person eliminateNext();
+//
+//	// prints the current content of circle in sequence starting from the person with the least position number
+//	void printAll();
+//
+//	// any other member functions of your choice
+//	// ....
+//	int nextPotato();
+//	void play();
+//	void reset();
+//	void reset(int N, int M);
+//	int currentRound();
+//	int startPlayers();
+//	int startPasses();
+//	Person timeEliminateNext(double*time);
+//	double timePlay(int * eliminations);
+//
+//private:
+//	VectorMyJosephus vector;
+//	ListMyJosephus list;
+//	bool useList;
 };
 
 #endif
