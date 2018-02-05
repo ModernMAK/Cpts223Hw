@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <iostream>
+#include <fstream>
 
 inline void promptGame(int * N, int * M)
 {
@@ -23,13 +24,13 @@ inline void promptGame(int * N, int * M)
 inline void writeToFile(string fileName, queue<plotData> * data)
 {
 	ofstream file;
-	file.open(fileName);
+	file.open(fileName.c_str());
 
 	while (data->size() > 0)
 	{
 		plotData inst = data->front();
 		data->pop();
-		file << inst.getM() << "," << inst.getN() << "," << inst.getTotalElimTime() << "," << inst.getTotalElimTime() << "," << inst.averageEliminationTime()() << std::endl;
+		file << inst.getM() << "," << inst.getN() << "," << inst.getTotalElimTime() << "," << inst.getTotalElimTime() << "," << inst.averageEliminationTime() << std::endl;
 	}
 	file.close();
 }
