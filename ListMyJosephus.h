@@ -21,12 +21,12 @@ public:
 	ListMyJosephus();
 	ListMyJosephus(int N, int M);
 	~ListMyJosephus();
-	void init(int N, int M) override;
-	void clear() override;
-	void printAll() override;
+	void init(int N, int M);
+	void clear();
+	void printAll();
 private:
-	void addPerson(int position) override;
-	Person getAndRemoveAt(int position) override;
+	void addPerson(int position);
+	Person getAndRemoveAt(int position);
 	list<Person> circ;
 //
 //public:

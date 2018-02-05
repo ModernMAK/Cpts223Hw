@@ -22,20 +22,21 @@ inline void mainLogic(AbstractJosephus * gInterface)
 
 	cout << endl << "!!! BEGAN TESTING " << " !!!" << endl;
 	cout << endl << "!!! TESTING PLAY !!!" << endl;
-	int N;
+	
 
-	auto g = Game(gInterface);
+	Game g = Game(gInterface);
 	g.play();
 
 
 	//Time Code, M Constant
 	cout << endl << "!!! TESTING TIME DEPENDENCE ON PLAYERS!!!" << endl;
-	auto mData = queue<plotData>();
+	queue<plotData> mData = queue<plotData>();
 	double totalTime = 0;
 	double testTime;
-	auto trials = 0;
-	auto eliminations = 0;
-	auto M = 3;
+	int trials = 0;
+	int eliminations = 0;
+	int M = 3;
+	int N;
 	for (N = 4; N <= 1024; N *= 2)
 	{
 		trials++;
@@ -44,7 +45,7 @@ inline void mainLogic(AbstractJosephus * gInterface)
 		totalTime += testTime;
 		mData.push(plotData(N, M, testTime, eliminations));
 	}
-	auto averageTime = totalTime / trials;
+	double averageTime = totalTime / trials;
 	cout << "CPU time in seconds for M:" << M << " N:[4,8,16,32...1024]" << endl;
 	cout << "Total Test Time : " << totalTime << endl;
 	cout << "Average Test Time : " << averageTime << endl;
@@ -54,7 +55,7 @@ inline void mainLogic(AbstractJosephus * gInterface)
 
 	//Time Code, N constant
 	cout << endl << "!!! TESTING TIME DEPENDENCE ON PLAYERS!!!" << endl;
-	auto nData = queue<plotData>();
+	queue<plotData> nData = queue<plotData>();
 	totalTime = 0;
 	trials = 0;
 	eliminations = 0;
@@ -78,18 +79,18 @@ inline void mainLogic(AbstractJosephus * gInterface)
 	cout << endl << "!!! FINISHED TESTING !!!" << endl;
 	cout << endl << "!!! WRITING ELIM TIME RESULTS !!!" << endl;
 
-	auto mFile = ofstream("mData.csv");
+	ofstream mFile = ofstream("mData.csv");
 	while (mData.size() > 0)
 	{
-		auto data = mData.front();
+		plotData data = mData.front();
 		mData.pop();
 		data.writeToFile(mFile);
 	}
 	mFile.close();
-	auto nFile = ofstream("nData.csv");
+	ofstream nFile = ofstream("nData.csv");
 	while (nData.size() > 0)
 	{
-		auto data = nData.front();
+		plotData data = nData.front();
 		nData.pop();
 		data.writeToFile(nFile);
 	}

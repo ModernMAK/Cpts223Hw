@@ -182,9 +182,9 @@ Person Game::eliminateNext()
 
 Person Game::timeEliminateNext(double* elimTime)
 {
-	auto start = clock();
-	auto elim = eliminateNext();
-	auto end = clock();
+	clock_t start = clock();
+	Person elim = eliminateNext();
+	clock_t end = clock();
 	*elimTime = (double)(end - start) / CLOCKS_PER_SEC;
 	return elim;
 }
@@ -206,15 +206,15 @@ void Game::reset(int N, int M)
 
 void Game::play()
 {
-	auto elims = queue<Person>();
-	auto currentRound = 1;
+	queue<Person> elims = queue<Person>();
+	int currentRound = 1;
 	while(currentSize() > 1)
 	{
 		//Dont print on last round
 		cout << "Round " << currentRound << endl;
 		printAll();
 		cout << endl;
-		auto lost = eliminateNext();
+		Person lost = eliminateNext();
 		elims.push(lost);
 		cout << "Eliminated ";
 		lost.print();
@@ -225,7 +225,7 @@ void Game::play()
 	cout << "Elimination Order" << endl;
 	while(elims.size() > 0)
 	{
-		auto p = elims.front();
+		Person p = elims.front();
 		elims.pop();
 		p.print();
 		cout << " ";
@@ -240,10 +240,10 @@ double Game::timePlay(int * eliminations)
 {
 	double elimTime = 0;
 	double totalTime = 0;
-	auto elims = queue<Person>();
+	queue<Person> elims = queue<Person>();
 	while (gameInterface->currentSize() > 0)
 	{
-		auto lost = timeEliminateNext(&elimTime);
+		Person lost = timeEliminateNext(&elimTime);
 		elims.push(lost);
 		totalTime += elimTime;
 	}

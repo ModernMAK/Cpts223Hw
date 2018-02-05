@@ -38,7 +38,7 @@ bool AbstractJosephus::isEmpty()
 
 Person AbstractJosephus::eliminateNext()
 {
-	auto eliminated = getAndRemoveAt(nextElimPosition);
+	Person eliminated = getAndRemoveAt(nextElimPosition);
 	advanceElimPosition();
 	return eliminated;
 }
@@ -60,7 +60,7 @@ void AbstractJosephus::advanceElimPosition()
 //Cant be inside init because constructors call the base instance.. which defeats the point of my init plans...
 void AbstractJosephus::fillCircle()
 {
-	for (auto i = 0; i < size; i++)
+	for (int i = 0; i < size; i++)
 	{
 		addPerson(i);
 	}

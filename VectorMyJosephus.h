@@ -21,12 +21,12 @@ public:
 	VectorMyJosephus();
 	VectorMyJosephus(int N, int M);
 	~VectorMyJosephus();
-	void init(int N, int M) override;
+	void init(int N, int M);
 	void clear() override;
 	void printAll() override;
 private:
-	void addPerson(int position) override;
-	Person getAndRemoveAt(int position) override;
+	void addPerson(int position);
+	Person getAndRemoveAt(int position);
 	vector<Person> circ;
 //public:
 //	// Constructors:
