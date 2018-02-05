@@ -3,18 +3,19 @@
 #include "Game.h"
 #include <string>
 #include "plotData.h"
+#include <stdlib.h>
 
 inline void promptGame(int * N, int * M)
 {
 	string temp;
 	cout << "# of Players? (N)" << endl;
 	getline(cin, temp);
-	*N = stoi(temp);
+	*N = atoi(temp.c_str());
 	temp = "";
 
 	cout << "# of Potato Passes? (M)" << endl;
 	getline(cin, temp);
-	*M = stoi(temp);
+	*M = atoi(temp.c_str());
 }
 
 inline void mainLogic(AbstractJosephus * gInterface)

@@ -22,8 +22,8 @@ public:
 	VectorMyJosephus(int N, int M);
 	~VectorMyJosephus();
 	void init(int N, int M);
-	void clear() override;
-	void printAll() override;
+	void clear();
+	void printAll();
 private:
 	void addPerson(int position);
 	Person getAndRemoveAt(int position);
