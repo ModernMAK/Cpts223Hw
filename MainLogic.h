@@ -20,6 +20,20 @@ inline void promptGame(int * N, int * M)
 	*M = atoi(temp.c_str());
 }
 
+inline void writeToFile(string fileName, queue<plotData> * data)
+{
+	ofstream file;
+	file.open(fileName);
+
+	while (data->size() > 0)
+	{
+		plotData inst = data->front();
+		data->pop();
+		file << inst.getM() << "," << inst.getN() << "," << inst.getTotalElimTime() << "," << inst.getTotalElimTime() << "," << inst.averageEliminationTime()() << std::endl;
+	}
+	file.close();
+}
+
 inline void mainLogic(AbstractJosephus * gInterface)
 {
 
@@ -81,24 +95,9 @@ inline void mainLogic(AbstractJosephus * gInterface)
 	//Done, Yay!
 	cout << endl << "!!! FINISHED TESTING !!!" << endl;
 	cout << endl << "!!! WRITING ELIM TIME RESULTS !!!" << endl;
-
-	ofstream mFile = ofstream("mData.csv");
-	while (mData.size() > 0)
-	{
-		plotData data = mData.front();
-		mData.pop();
-		data.writeToFile(mFile);
-	}
-	mFile.close();
-	ofstream nFile = ofstream("nData.csv");
-	while (nData.size() > 0)
-	{
-		plotData data = nData.front();
-		nData.pop();
-		data.writeToFile(nFile);
-	}
-	nFile.close();
-
+	
+	writeToFile("mData.csv", &mData);
+	writeToFile("nData.csv", &nData);
 
 	//Prompt to avoid closing the terminal!
 	cout << endl << "!!! PRESS ANY KEY TO EXIT !!!" << endl;

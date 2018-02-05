@@ -9,13 +9,16 @@ public:
 
 	~plotData();
 
-	void writeToFile(std::ofstream& ofile);
-
+	//void writeToFile(std::ofstream& ofile);
+	int getM();
+	int getN();
+	double getTotalElimTime();
+	int getElims();
+	double averageEliminationTime();
 private:
 	int M;
 	int N;
 	double totalEliminationTime;
 	int eliminations;
-	double averageEliminationTime();
 };
 #endif

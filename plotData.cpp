@@ -3,10 +3,30 @@
 
 
 
-void plotData::writeToFile(std::ofstream& ofile)
+//void plotData::writeToFile(std::ofstream& ofile)
+//{
+//	ofile << M << "," << N << "," << totalEliminationTime << "," << eliminations << "," << averageEliminationTime() << std::endl;
+//}
+int plotData::getM()
 {
-	ofile << M << "," << N << "," << totalEliminationTime << "," << eliminations << "," << averageEliminationTime() << std::endl;
+	return M;
+	
 }
+int plotData::getN()
+{
+	return  N;
+}
+int plotData::getElims()
+{
+	return  eliminations;
+}
+double plotData::getTotalElimTime()
+{
+	return totalEliminationTime;
+}
+
+
+
 
 double plotData::averageEliminationTime()
 {
