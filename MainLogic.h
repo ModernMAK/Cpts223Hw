@@ -4,6 +4,8 @@
 #include <string>
 #include "plotData.h"
 #include <stdlib.h>
+#include <stdio.h>
+#include <iostream>
 
 inline void promptGame(int * N, int * M)
 {
