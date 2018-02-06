@@ -1,7 +1,7 @@
 #ifndef __TESTLISTMyJosephus_H__
 #define __TESTLISTMyJosephus_H__
 #include "MainLogic.h"
-
+#include "ListMyJosephus.h"
 int main(int argc, char *argv[])
 {
 	int M, N;

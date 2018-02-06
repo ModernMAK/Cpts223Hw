@@ -1,6 +1,7 @@
 #ifndef __TESTVECTORMyJosephus_H__
 #define __TESTVECTORMyJosephus_H__
 #include "MainLogic.h"
+#include "VectorMyJosephus.h"
 int main(int argc, char *argv[])
 {
 	int M, N;
