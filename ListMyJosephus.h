@@ -14,7 +14,8 @@
 #include <list>
 #include "AbstractJosephus.h"
 
-using namespace std;
+using std::list;
+using std::cout;
 
 class ListMyJosephus : public AbstractJosephus {
 public:

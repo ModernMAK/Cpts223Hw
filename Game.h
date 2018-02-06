@@ -1,12 +1,25 @@
 
 #ifndef __GAME_H__
 #define __GAME_H__
-
-#include "VectorMyJosephus.h"
-#include "ListMyJosephus.h"
+//
+//#include "VectorMyJosephus.h"
+//#include "ListMyJosephus.h"
 #include <queue>
 #include<ctime>
-
+#include "AbstractJosephus.h"
+#include <string>
+#include "plotData.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <iostream>
+#include <fstream>
+#include <queue>
+using std::string;
+using std::cout;
+using std::cin;
+using std::queue;
+using std::ofstream;
+using std::endl;
 
 
 //Facade for testing, would have been easier by creating an interface class... but lazy

@@ -10,12 +10,11 @@
 #ifndef __VECTORMyJosephus_H__
 #define __VECTORMyJosephus_H__
 
-#include <iostream>
 #include <vector>
 #include "Person.h"
 #include "AbstractJosephus.h"
-using namespace std;
-
+//using namespace std;
+using std::vector;
 class VectorMyJosephus : public AbstractJosephus {
 public:
 	VectorMyJosephus();

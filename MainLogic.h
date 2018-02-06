@@ -1,12 +1,6 @@
 #ifndef __MainLogic_H__
 #define __MainLogic_H__
 #include "Game.h"
-#include <string>
-#include "plotData.h"
-#include <stdlib.h>
-#include <stdio.h>
-#include <iostream>
-#include <fstream>
 
 inline void promptGame(int * N, int * M)
 {
