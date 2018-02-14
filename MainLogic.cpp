@@ -24,7 +24,7 @@ bool runTest(string inputDirectory, int n, int algoId, queue<PlotData> * const &
 	vector<int> v = vector<int>();
 	double averageTime = 0.0;
 	int iMax = 10;
-	double timeCutoff = 60 * 60 * 1;
+	double timeCutoff = 60 * 0.5;
 	for (int i = 0; i < iMax; i++)
 	{
 		string fileName = "input_" + to_string(n) + "_" + to_string(i) + ".txt";
@@ -33,6 +33,7 @@ bool runTest(string inputDirectory, int n, int algoId, queue<PlotData> * const &
 
 		cout << "- - - - - - - - - - - - - - - - - -" << endl;
 		cout << "Algorithm " << (algoId + 1) << endl;//Algorithm
+		cout << "Set " << i << endl;//Algorithm
 		printVector(v);//Prints the size and elements
 		double time = timeAlgo(fetchAlgo(algoId), v, &sum);
 		cout << "Sum:\t" << sum << endl;

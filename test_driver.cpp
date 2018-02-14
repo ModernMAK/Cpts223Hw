@@ -8,7 +8,7 @@ int main()
 	getline(cin, inputDirectory);
 	queue<PlotData> dataCache = queue<PlotData>();
 	bool timedOutTracker[4] = { false,false,false,false };
-	for (int i = 8; i < 8192; i *= 2) {
+	for (int i = 8; i <= 8192; i *= 2) {
 		for (int j = 0; j < 4; j++)
 		{
 			if (!timedOutTracker[j]) 
@@ -28,6 +28,5 @@ int main()
 	flushToFile("results.csv", &dataCache);
 
 	cout << "Saved results." << endl << "Press Enter to Exit..." << endl;
-	char exitFlag;
-	cin >> exitFlag;
+	getline(cin, inputDirectory);//Recycle variable
 }
