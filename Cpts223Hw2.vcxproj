@@ -115,6 +115,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AbstractJosephus.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="ListMyJosephus.h" />
+    <ClInclude Include="plotData.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ElapsedTimeExample.cpp" />
+    <ClCompile Include="plotData.cpp" />
+    <ClCompile Include="TestVectorMyJosephus.cpp" />
+    <ClCompile Include="VectorMyJosephus.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
