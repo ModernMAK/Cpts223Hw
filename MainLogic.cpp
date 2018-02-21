@@ -1,6 +1,6 @@
 #include "MainLogic.h"
 
-
+//Clears queue, writes queue to file
 void flushToFile(string filePath, queue<PlotData> * const &  dataCache)
 {
 
@@ -17,6 +17,9 @@ void flushToFile(string filePath, queue<PlotData> * const &  dataCache)
 }
 
 
+//Runs all tests for an algorithm, searches for files in the given directory, stores results in cache
+//Returns true when algo times out
+
 bool runTest(string inputDirectory, int n, int algoId, queue<PlotData> * const &  dataCache)
 {
 	bool timedOut = false;
@@ -24,7 +27,7 @@ bool runTest(string inputDirectory, int n, int algoId, queue<PlotData> * const &
 	vector<int> v = vector<int>();
 	double averageTime = 0.0;
 	int iMax = 10;
-	double timeCutoff = 60 * 0.5;
+	double timeCutoff = 60 * 0.5;//Times out at 30 seconds
 	for (int i = 0; i < iMax; i++)
 	{
 		string fileName = "input_" + to_string(n) + "_" + to_string(i) + ".txt";
@@ -53,7 +56,7 @@ bool runTest(string inputDirectory, int n, int algoId, queue<PlotData> * const &
 	return timedOut;
 }
 
-
+//Load a vector from file
 void loadFromFile(string filePath, vector<int> & a)
 {
 	a.clear();
@@ -78,6 +81,7 @@ void loadFromFile(string filePath, vector<int> & a)
 	}
 	file.close();
 }
+//Prints the size and elements of a vector
 void printVector(vector<int> & a)
 {
 	cout << "Size:\t" << a.size() << endl;

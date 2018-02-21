@@ -1,4 +1,5 @@
 #include "Algorithms.h"
+//Taken from the book, cubic
 int maxSubSum1(const vector<int> & a)
 {
 	int maxSum = 0;
@@ -17,6 +18,7 @@ int maxSubSum1(const vector<int> & a)
 	return maxSum;
 }
 
+//Taken from the book, quadratic
 int maxSubSum2(const vector<int> & a)
 {
 	int maxSum = 0;
@@ -34,6 +36,7 @@ int maxSubSum2(const vector<int> & a)
 	return maxSum;
 }
 
+//The Max of 3 numbers
 int max3(int l ,int r, int border)
 {
 	if (l < r)
@@ -41,6 +44,7 @@ int max3(int l ,int r, int border)
 	else
 		return (l < border) ? border : l;
 }
+//Taken from the book, linear
 int maxSumRec(const vector<int> & a, int left, int right)
 {
 	if (left == right) // Base case
@@ -68,11 +72,13 @@ int maxSumRec(const vector<int> & a, int left, int right)
 	
 	return max3(maxLeftSum, maxRightSum, maxLeftBorderSum + maxRightBorderSum);
 }
+//Taken from the book, linear
 int maxSubSum3(const vector<int> & a)
 {
 	 return maxSumRec(a, 0, a.size() - 1);
 }
 
+//Taken from the book, linear
 int maxSubSum4(const vector<int> & a)
 {
 	int maxSum = 0, thisSum = 0;
@@ -89,6 +95,7 @@ int maxSubSum4(const vector<int> & a)
 	return maxSum;
 }
 
+//Times an algorithm (using an algorithm delegate) with the given vector data, storing the value of the algorithm in maxSum
 double timeAlgo(AlgoDelagate algo, const vector<int> & vector, int * const & maxSum)
 {
 	clock_t start = clock();
@@ -97,10 +104,11 @@ double timeAlgo(AlgoDelagate algo, const vector<int> & vector, int * const & max
 	double time = (double)(end - start) / CLOCKS_PER_SEC;
 	return time;
 }
-
+//Fetches an algorithm based on 
 AlgoDelagate fetchAlgo(int j)
 {
-	j = (j < 0 ? -j : j);
+	//Wraps all numbers to [0,3]
+	j = (j < 0 ? (-j + -j % 4) : j);
 	j %= 4;
 	switch (j)
 	{
