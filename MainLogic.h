@@ -12,7 +12,9 @@ using std::string;
 using std::cin;
 using std::cout;
 using std::endl;
-using std::to_string;
+#define ITOA_BUFFER_SIZE 16
+
+//using std::to_string;
 using std::queue;
 //Flush the queue to a file
 void flushToFile(string filePath, queue<PlotData> * const &  dataCache);

@@ -20,6 +20,7 @@ void flushToFile(string filePath, queue<PlotData> * const &  dataCache)
 //Runs all tests for an algorithm, searches for files in the given directory, stores results in cache
 //Returns true when algo times out
 
+
 bool runTest(string inputDirectory, int n, int algoId, queue<PlotData> * const &  dataCache)
 {
 	bool timedOut = false;
@@ -28,9 +29,10 @@ bool runTest(string inputDirectory, int n, int algoId, queue<PlotData> * const &
 	double averageTime = 0.0;
 	int iMax = 10;
 	double timeCutoff = 60 * 0.5;//Times out at 30 seconds
+	char itoaBuffer[ITOA_BUFFER_SIZE];//16, since int's max value is 10 chars, +1 for - sign, plus null char, plus 2 because 16 is a power of 2
 	for (int i = 0; i < iMax; i++)
 	{
-		string fileName = "input_" + to_string(n) + "_" + to_string(i) + ".txt";
+		string fileName = "input_" + string(itoa(n,itoaBuffer,10)) + "_" + string(itoa(i, itoaBuffer, 10)) + ".txt";
 		string filePath = inputDirectory + "/" + fileName;
 		loadFromFile(filePath, v);
 
