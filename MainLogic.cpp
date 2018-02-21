@@ -29,10 +29,9 @@ bool runTest(string inputDirectory, int n, int algoId, queue<PlotData> * const &
 	double averageTime = 0.0;
 	int iMax = 10;
 	double timeCutoff = 60 * 0.5;//Times out at 30 seconds
-	char itoaBuffer[ITOA_BUFFER_SIZE];//16, since int's max value is 10 chars, +1 for - sign, plus null char, plus 2 because 16 is a power of 2
 	for (int i = 0; i < iMax; i++)
 	{
-		string fileName = "input_" + string(itoa(n,itoaBuffer,10)) + "_" + string(itoa(i, itoaBuffer, 10)) + ".txt";
+		string fileName = "input_" + to_string(n) + "_" + to_string(i) + ".txt";
 		string filePath = inputDirectory + "/" + fileName;
 		loadFromFile(filePath, v);
 
@@ -93,4 +92,31 @@ void printVector(vector<int> & a)
 		cout << *i << " ";
 	}
 	cout << endl;
+}
+
+string to_string(int i)
+{
+	//0 is special, it breaks my algorithm, so... catch it here
+	if (i == 0) return "0";
+
+	string output = "";
+	stack<char> s = stack<char>();
+	if (i < 0)
+	{
+		output += "-";
+		i = -i;		
+	}
+	while(i > 0)
+	{
+		int digit = i % 10;
+		i = i / 10;//integer division, truncates
+		char temp = '0' + digit;
+		s.push(temp);
+	}
+	while(!s.empty())
+	{
+		output += s.top();
+		s.pop();
+	}
+	return output;
 }

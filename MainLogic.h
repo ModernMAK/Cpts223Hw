@@ -6,13 +6,15 @@
 #include "queue"
 #include <iostream>
 #include "PlotData.h"
+#include "stack"
 using std::ifstream;
 using std::ofstream;
 using std::string;
+using std::stack;
 using std::cin;
 using std::cout;
 using std::endl;
-#define ITOA_BUFFER_SIZE 16
+
 
 //using std::to_string;
 using std::queue;
@@ -24,5 +26,8 @@ bool runTest(string inputDirectory, int n, int algoId, queue<PlotData> * const &
 void loadFromFile(string filePath, vector<int> & a);
 //Print the vector
 void printVector(vector<int> & a);
+//No ITOA and we're not c++11 compliant (no to_string)
+string to_string(int i);
+
 
 #endif
