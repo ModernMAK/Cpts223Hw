@@ -3,7 +3,10 @@
 #include "map"
 #include "string"
 #include "iostream"
-//using std::to_string;
+#include <cstdint>
+
+//Not c++11 compliant
+//using std::to_string; 
 using std::cout;
 using std::endl;
 using std::map;
@@ -13,12 +16,15 @@ using std::string;
 //Originally I had it at long, but this garuntees I get a 64 bit int
 //If changed, MAKE SURE it has twice as many bits as XY_T
 //Also update POS_TO_XY_BITS
-#define POS_T int64_t
+#define POS_T std::int64_t
+using std::int64_t;
+
 
 //Originally I had it at int, but this garuntees I get a 32 bit int
 //If changed, MAKE SURE it has half as many bits as POS_T
 //Also update POS_TO_XY_BITS
-#define XY_T int32_t
+#define XY_T std::int32_t
+using std::int32_t;
 
 //The different in bits between POS and XY
 #define POS_TO_XY_BITS 32;

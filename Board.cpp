@@ -1,5 +1,5 @@
 #include "Board.h"
-
+#include "Misc.h"
 //Constructor
 Board::Board()
 {
