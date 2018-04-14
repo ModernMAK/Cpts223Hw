@@ -115,6 +115,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Cluster.h" />
+    <ClInclude Include="Scheduler.h" />
+    <ClInclude Include="Job.h" />
+    <ClInclude Include="JobComparar.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Cluster.cpp" />
+    <ClCompile Include="Driver.cpp" />
+    <ClCompile Include="Scheduler.cpp" />
+    <ClCompile Include="Job.cpp" />
+    <ClCompile Include="JobComparar.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
