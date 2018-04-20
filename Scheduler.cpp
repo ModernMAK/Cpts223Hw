@@ -81,8 +81,8 @@ void Scheduler::printJobsStarted()
 		return;
 	cout << "Jobs Started" << endl;
 
-	for (Job j : _began_this_tick)
-		cout << "Job #" << j.getId() << " (" << j.getDescription() << ")" << endl;
+	for (vector<Job>::iterator it = _began_this_tick.begin(); it != _began_this_tick.end(); it++)//J
+		cout << "Job #" << it->getId() << " (" << it->getDescription() << ")" << endl;
 	cout << endl;
 }
 

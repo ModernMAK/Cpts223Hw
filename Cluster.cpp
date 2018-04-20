@@ -96,8 +96,8 @@ void Cluster::releaseJob(Job j)
 {
 	map<int,vector<int>>::iterator it = _processors_per_job_table.find(j.getId());//J
 	vector<int> released_list = it->second;
-	for (int released_id : released_list)//P
-		_processors_available.push(released_id);
+	for (vector<int>::iterator it = released_list.begin(); it != released_list.end(); it++)//P
+		_processors_available.push(*it);
 	_processors_per_job_table.erase(it);
 }
 //O(J)
@@ -106,9 +106,9 @@ void Cluster::printJobsCompleted()
 	if (_completed_this_tick.empty())
 		return;
 	cout << "Jobs Completed" << endl;
-	for (int job_id : _completed_this_tick)
+	for (vector<int>::iterator it = _completed_this_tick.begin(); it != _completed_this_tick.end(); it++)//J
 	{
-		cout << "Job #" << job_id << endl;
+		cout << "Job #" << *it << endl;
 	}
 	cout << endl;
 }
@@ -118,8 +118,8 @@ void Cluster::printJobsRunning()
 	if(_run_queue.empty())
 		return;
 	cout << "Jobs Running" << endl;
-	for (Job j : _run_queue)
-		cout << "Job #" << j.getId() << " (" << j.getDescription() << ") " << j.getTicksRun() << "/" << j.getTicksRequired() << endl;
+	for (list<Job>::iterator it = _run_queue.begin(); it != _run_queue.end(); it++)//J
+		cout << "Job #" << it->getId() << " (" << it->getDescription() << ") " << it->getTicksRun() << "/" << it->getTicksRequired() << endl;
 	cout << endl;
 }
 
