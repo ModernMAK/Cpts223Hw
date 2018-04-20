@@ -1,4 +1,6 @@
-#pragma once
+
+#ifndef JOB_COMPARAR_H 
+#define JOB_COMPARAR_H
 #include "Job.h"
 
 //Based on 
@@ -9,3 +11,4 @@
 struct JobComparar : std::binary_function <Job, Job, bool> {
 	bool operator() (const Job& x, const Job& y) const;
 };
+#endif

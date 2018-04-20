@@ -1,4 +1,7 @@
-#pragma once
+#ifndef CLUSTER_H
+#define CLUSTER_H
+
+
 #include "Job.h"
 #include <queue>
 #include <list>
@@ -44,3 +47,4 @@ private:
 	queue<int> _id_pool;
 };
 
+#endif

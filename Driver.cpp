@@ -1,3 +1,6 @@
+#ifndef DRIVER_CPP
+#define DRIVER_CPP
+
 #include "Scheduler.h"
 #include <fstream>
 using std::cin;
@@ -5,7 +8,7 @@ using std::ifstream;
 int promptCluster();
 int promptInt(string msg);
 string promptStr(string msg);
-void promptJob(string* desc, int* processors, int *ticks);
+//void promptJob(string* desc, int* processors, int *ticks);
 void parseLine(string line, string* desc, int* processors, int *ticks);
 string toUpperString(string input);
 
@@ -122,15 +125,15 @@ void parseLine(string line, string* desc, int* processors, int *ticks)
 	*processors = stoi(temp[1]);
 	*ticks = stoi(temp[2]);
 }
-void promptJob(string* desc, int* processors, int *ticks)
-{
-	string prompt = "Please enter a Job in the format of:\tJOB_NAME #_Processors #_Ticks\n";
-	string s = promptStr(prompt);
-	//For quick and easy use
-	if (s == "")
-		s = "NULL 0 0";
-	parseLine(s, desc, processors, ticks);
-}
+//void promptJob(string* desc, int* processors, int *ticks)
+//{
+//	string prompt = "Please enter a Job in the format of:\tJOB_NAME #_Processors #_Ticks\n";
+//	string s = promptStr(prompt);
+//	//For quick and easy use
+//	if (s == "")
+//		s = "NULL 0 0";
+//	parseLine(s, desc, processors, ticks);
+//}
 int promptInt(string msg)
 {
 	return stoi(promptStr(msg));
@@ -142,3 +145,4 @@ string promptStr(string msg)
 	getline(cin, a);
 	return a;
 }
+#endif

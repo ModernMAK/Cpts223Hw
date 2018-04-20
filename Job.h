@@ -1,5 +1,5 @@
-#pragma once
-
+#ifndef JOB_H 
+#define JOB_H
 #include "string"
 using std::string;
 class Job
@@ -29,3 +29,4 @@ private:
 	int _ticks_required;
 	int _ticks_run;
 };
+#endif

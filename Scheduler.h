@@ -1,4 +1,6 @@
-#pragma once
+
+#ifndef SCHEDULER_H 
+#define SCHEDULER_H
 #include "Cluster.h"
 #include "JobComparar.h"
 #include "Job.h"
@@ -47,3 +49,4 @@ private:
 
 };
 
+#endif
