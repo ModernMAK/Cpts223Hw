@@ -21,6 +21,7 @@ void Scheduler::print()
 	printJobsStarted();
 	_cluster.printJobsRunning();
 	_cluster.printJobsCompleted();
+	cout << "Processors Available : " << _cluster.getAvailableProcessors() << " / " << _cluster.getTotalProcessors() << endl;
 }
 
 
@@ -76,18 +77,20 @@ void Scheduler::submitJob(string description, int req_processors, int req_ticks)
 
 void Scheduler::printJobsStarted()
 {
-		cout << "Jobs Started" << endl;
+	if(_began_this_tick.empty())
+		return;
+	cout << "Jobs Started" << endl;
 
-		for (Job j : _began_this_tick)
-			cout << "Job #" << j.getId() << " (" << j.getDescription() << ")" << endl;
-		cout << endl;
+	for (Job j : _began_this_tick)
+		cout << "Job #" << j.getId() << " (" << j.getDescription() << ")" << endl;
+	cout << endl;
 }
 
 
 int Scheduler::canInsertJob(int req_processors, int req_ticks)
 {
 
-	if (0 > req_processors || req_processors >= _cluster.getTotalProcessors())
+	if (0 > req_processors || req_processors > _cluster.getTotalProcessors())
 		return JC_INVALID_PROCESSORS;
 	if (req_ticks < 0)
 		return JC_INVALID_TICKS;
@@ -99,24 +102,25 @@ void Scheduler::handleJobCode(int job_code)
 	switch(job_code)
 	{
 	case JC_INVALID_PROCESSORS:
-		cout << "The cluster does not support that many processors." << endl;
+		cout << "The cluster does not support that many processors." << endl << endl;
 		break;
 	case JC_INVALID_TICKS:
-		cout << "The cluster does not support jobs with negative ticks." << endl;
+		cout << "The cluster does not support jobs with negative ticks." << endl << endl;
 		break;
 	case JC_SUCCESS:
 		break;
 	default:
-		cout << "An invalid error code was submitted." << endl;
+		cout << "An invalid error code was submitted." << endl << endl;
 		break;
 	}
 }
-
+//O(1)
 Job Scheduler::getShortestJob()
 {
 	return _wait_queue.top();
 }
 
+//O(2Log(J))
 void Scheduler::deleteShortestJob()
 {
 	_wait_queue.pop();
@@ -133,6 +137,7 @@ void Scheduler::init(int processors)
 	_cluster = Cluster(processors);
 }
 
+//O(Log(J))
 int Scheduler::insertJob(string description, int req_processors, int req_ticks)
 {
 	Job j = Job(getNextId(), description, req_processors, req_ticks);

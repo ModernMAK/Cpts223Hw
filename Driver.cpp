@@ -1,5 +1,7 @@
 #include "Scheduler.h"
+#include <fstream>
 using std::cin;
+using std::ifstream;
 int promptCluster();
 int promptInt(string msg);
 string promptStr(string msg);
@@ -7,39 +9,83 @@ void promptJob(string* desc, int* processors, int *ticks);
 void parseLine(string line, string* desc, int* processors, int *ticks);
 string toUpperString(string input);
 
+
 int main()
 {
-	int tickCounter = 1;
 	Scheduler s(promptCluster());
 	cout << endl;
+	int tickCounter = 1;
 	string jobDesc;
 	int jobProcessors;
 	int jobTicks;
+	ifstream file("input.txt");
 	bool hasIdled = false;
-	while(true)
+	bool isDone = false;
+	while (!isDone)
 	{
+		cout << "---------------------" << endl;
 		cout << "Tick #" << tickCounter << endl;
-		promptJob(&jobDesc, &jobProcessors, &jobTicks);
-		cout << endl;
-		s.submitJob(jobDesc, jobProcessors, jobTicks);
+		if (!file.eof())
+		{
+			string line = "";
+			getline(file, line);
+			parseLine(line, &jobDesc, &jobProcessors, &jobTicks);
+			s.submitJob(jobDesc, jobProcessors, jobTicks);
+		}
 		s.tick();
 		s.print();
-		if(s.isIdle())
+		if (s.isIdle())
 		{
 			if (hasIdled)
-				exit(JC_SUCCESS);
+			{
+				isDone = true;
+				break;
+			}
 			else
 			{
 				cout << "Scheduler Is Idle, will shut down if Idle next tick" << endl;
 				hasIdled = true;
 			}
 		}
-			
+		tickCounter++;
 	}
-	
-
-
+	promptStr("Press enter to exit...\n");
 }
+
+////Manual Input tester
+//int main()
+//{
+//	Scheduler s(promptCluster());
+//	cout << endl;
+//	int tickCounter = 1;
+//	string jobDesc;
+//	int jobProcessors;
+//	int jobTicks;
+//	bool hasIdled = false;
+//	while (true)
+//	{
+//		cout << "Tick #" << tickCounter << endl;
+//		promptJob(&jobDesc, &jobProcessors, &jobTicks);
+//		cout << endl;
+//		s.submitJob(jobDesc, jobProcessors, jobTicks);
+//		s.tick();
+//		s.print();
+//		if (s.isIdle())
+//		{
+//			if (hasIdled)
+//				exit(EXIT_SUCCESS);
+//			else
+//			{
+//				cout << "Scheduler Is Idle, will shut down if Idle next tick" << endl;
+//				hasIdled = true;
+//			}
+//		}
+//		tickCounter++;
+//
+//	}
+//}
+
+
 int promptCluster()
 {
 	int num;
@@ -57,7 +103,7 @@ string toUpperString(string input)
 	for (int i = 0; i < input.size(); i++)
 		output[i] = toupper(output[i]);
 	return output;
-}
+} 
 void parseLine(string line, string* desc, int* processors, int *ticks)
 {
 	line += "  ";//Garuntees 2 spaces, doesnt affect the end result if entered properly

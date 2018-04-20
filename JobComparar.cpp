@@ -4,5 +4,5 @@
 //http://www.cplusplus.com/reference/functional/greater/
 bool JobComparar::operator()(const Job& x, const Job& y) const
 { 
-	return x.getTicksRequired()<y.getTicksRequired();
+	return x.getTicksRequired()>y.getTicksRequired();
 }

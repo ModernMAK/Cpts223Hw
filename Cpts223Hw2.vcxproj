@@ -127,6 +127,9 @@
     <ClCompile Include="Job.cpp" />
     <ClCompile Include="JobComparar.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="input.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
