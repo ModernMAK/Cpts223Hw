@@ -4,7 +4,7 @@
 #include "MainFunc.h"
 #include "HashingFunc.h"
 
-void main()
+int main()
 {
 	vector<string> dataArray, queryArray;
 	LinearHashTable<string, FullLengthHash> lhs;
@@ -23,4 +23,5 @@ void main()
 	cout << "Press Enter to exit" << endl;
 	string garbage;
 	getline(cin, garbage);
+	return EXIT_SUCCESS;
 }
