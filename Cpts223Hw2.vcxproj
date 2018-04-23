@@ -19,17 +19,25 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="HashTableInterface.h" />
+    <ClInclude Include="HashingFunc.h" />
+    <ClInclude Include="HashTableTestInterface.h" />
     <ClInclude Include="LinearProbing.h" />
+    <ClInclude Include="MainFunc.h" />
     <ClInclude Include="QuadraticProbing.h" />
     <ClInclude Include="SeparateChaining.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="HashTableInterface.cpp" />
+    <ClCompile Include="HashTableTestInterface.cpp" />
     <ClCompile Include="LinearProbing.cpp" />
+    <ClCompile Include="MainFunc.cpp" />
     <ClCompile Include="QuadraticProbing.cpp" />
     <ClCompile Include="SeparateChaining.cpp" />
     <ClCompile Include="TestAim1.cpp" />
+    <ClCompile Include="TestAim2.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="OHenry.txt" />
+    <Text Include="queries.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

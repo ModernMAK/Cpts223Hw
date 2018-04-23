@@ -1,6 +1,6 @@
 #ifndef LINEAR_PROBING_H
 #define LINEAR_PROBING_H
-#include "HashTableInterface.h"
+#include "HashTableTestInterface.h"
 #include <vector>
 #include <algorithm>
 #include <functional>
@@ -21,7 +21,7 @@ int nextPrime(int n);
 // int hashCode( string str ) --> Global method to hash strings
 
 template <typename HashedObj, typename HashFunc = hash<HashedObj>>
-class LinearHashTable : HashTableInterface<HashedObj>
+class LinearHashTable : public HashTableTestInterface<HashedObj>
 {
 public:
 	explicit LinearHashTable(int size = 101) : array(nextPrime(size))
@@ -40,7 +40,7 @@ public:
 	{
 		currentSize = 0;
 		for (auto & entry : array)
-			entry.info = EMPTY;
+			entry.info = EMPTY;				
 	}
 
 	bool insert(const HashedObj & x) override
@@ -67,6 +67,45 @@ public:
 	{
 		// Insert x as active
 		int currentPos = findPos(x);
+		if (isActive(currentPos))
+			return false;
+
+		if (array[currentPos].info != DELETED)
+			++currentSize;
+
+		array[currentPos] = std::move(x);
+		array[currentPos].info = ACTIVE;
+
+		// Rehash; see Section 5.5
+		if (currentSize > array.size() / 2)
+			rehash();
+
+		return true;
+	}
+	bool testInsert(const HashedObj & x) override
+	{
+		// Insert x as active
+		int currentPos = findPosTest(x);
+		if (isActive(currentPos))
+			return false;
+
+		if (array[currentPos].info != DELETED)
+			++currentSize;
+
+		array[currentPos].element = x;
+		array[currentPos].info = ACTIVE;
+
+		// Rehash; see Section 5.5
+		if (currentSize > array.size() / 2)
+			rehash();
+
+		return true;
+	}
+
+	bool testInsert(HashedObj && x) override
+	{
+		// Insert x as active
+		int currentPos = findPosTest(x);
 		if (isActive(currentPos))
 			return false;
 
@@ -116,6 +155,23 @@ private:
 		return array[currentPos].info == ACTIVE;
 	}
 
+	int findPosTest(const HashedObj & x)
+	{
+		int currentPos = myhash(x);
+
+		while (array[currentPos].info != EMPTY &&
+			array[currentPos].element != x)
+		{
+			
+			//Incriments collisions
+			HashTableTestInterface<HashedObj>::addCollision();
+			currentPos++;  // Compute ith probe
+			if (currentPos >= array.size())
+				currentPos -= array.size();
+		}
+
+		return currentPos;
+	}
 	int findPos(const HashedObj & x) const
 	{
 		int currentPos = myhash(x);

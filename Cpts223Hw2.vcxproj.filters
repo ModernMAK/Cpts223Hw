@@ -24,7 +24,13 @@
     <ClInclude Include="LinearProbing.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HashTableInterface.h">
+    <ClInclude Include="HashTableTestInterface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MainFunc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HashingFunc.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -41,8 +47,22 @@
     <ClCompile Include="TestAim1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="HashTableInterface.cpp">
+    <ClCompile Include="MainFunc.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TestAim2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HashTableTestInterface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="OHenry.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="queries.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

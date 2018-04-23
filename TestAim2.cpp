@@ -7,18 +7,18 @@
 void main()
 {
 	vector<string> dataArray, queryArray;
-	LinearHashTable<string, FullLengthHash> lhs;
-	QuadraticHashTable<string, FullLengthHash> qhs;
-	ChainingHashTable<string, FullLengthHash> chs;
+	QuadraticHashTable<string, FullLengthHash> flhs;
+	QuadraticHashTable<string, PrefixHash> phs;
+	QuadraticHashTable<string, SimpleHash> shs;
 
 	loadFromFile("OHenry.txt", dataArray);
 	loadFromFile("queries.txt", queryArray);
 
-	cout << "Running Collision Tests" << endl << endl;
+	cout << "Running Hash Tests" << endl  << endl;
 
-	RunTests(&lhs, dataArray, queryArray, "Linear");
-	RunTests(&qhs, dataArray, queryArray, "Quadratic");
-	RunTests(&chs, dataArray, queryArray, "Chaining");
+	RunTests(&flhs, dataArray, queryArray, "Full-Length");
+	RunTests(&phs, dataArray, queryArray, "Prefix");
+	RunTests(&shs, dataArray, queryArray, "Simple");
 
 	cout << "Press Enter to exit" << endl;
 	string garbage;

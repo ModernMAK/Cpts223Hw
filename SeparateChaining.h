@@ -1,6 +1,6 @@
 #ifndef SEPARATE_CHAINING_H
 #define SEPARATE_CHAINING_H
-#include "HashTableInterface.h"
+#include "HashTableTestInterface.h"
 #include <vector>
 #include <list>
 #include <string>
@@ -22,7 +22,7 @@ int nextPrime(int n);
 // void makeEmpty( )      --> Remove all items
 
 template <typename HashedObj, typename HashFunc = hash<HashedObj>>
-class ChainingHashTable : HashTableInterface<HashedObj>
+class ChainingHashTable : public HashTableTestInterface<HashedObj>
 {
 public:
 	explicit ChainingHashTable(int size = 101) : currentSize{ 0 }
@@ -46,7 +46,11 @@ public:
 	{
 		auto & whichList = theLists[myhash(x)];
 		if (find(begin(whichList), end(whichList), x) != end(whichList))
+		{
+			//Incriments collisions
+			HashTableTestInterface<HashedObj>::addCollision();
 			return false;
+		}
 		whichList.push_back(x);
 
 		// Rehash; see Section 5.5
@@ -59,8 +63,44 @@ public:
 	bool insert(HashedObj && x) override
 	{
 		auto & whichList = theLists[myhash(x)];
-		if (find(begin(whichList), end(whichList), x) != end(whichList))
+		if (find(begin(whichList), end(whichList), x) != end(whichList)) 		
 			return false;
+		
+		whichList.push_back(std::move(x));
+
+		// Rehash; see Section 5.5
+		if (++currentSize > theLists.size())
+			rehash();
+
+		return true;
+	}
+	bool testInsert(const HashedObj & x) override
+	{
+		auto & whichList = theLists[myhash(x)];
+		if (find(begin(whichList), end(whichList), x) != end(whichList))
+		{
+			//Incriments collisions
+			HashTableTestInterface<HashedObj>::addCollision();
+			return false;
+		}
+		whichList.push_back(x);
+
+		// Rehash; see Section 5.5
+		if (++currentSize > theLists.size())
+			rehash();
+
+		return true;
+	}
+
+	bool testInsert(HashedObj && x) override
+	{
+		auto & whichList = theLists[myhash(x)];
+		if (find(begin(whichList), end(whichList), x) != end(whichList))
+		{
+			//Incriments collisions
+			HashTableTestInterface<HashedObj>::addCollision();
+			return false;
+		}
 		whichList.push_back(std::move(x));
 
 		// Rehash; see Section 5.5
