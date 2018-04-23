@@ -30,7 +30,7 @@ public:
 		theLists.resize(101);
 	}
 
-	bool contains(const HashedObj & x) const
+	bool contains(const HashedObj & x) const override
 	{
 		auto & whichList = theLists[myhash(x)];
 		return find(begin(whichList), end(whichList), x) != end(whichList);
@@ -42,7 +42,7 @@ public:
 			thisList.clear();
 	}
 
-	bool insert(const HashedObj & x)
+	bool insert(const HashedObj & x) override
 	{
 		auto & whichList = theLists[myhash(x)];
 		if (find(begin(whichList), end(whichList), x) != end(whichList))
@@ -60,7 +60,7 @@ public:
 		return true;
 	}
 
-	bool insert(HashedObj && x)
+	bool insert(HashedObj && x) override
 	{
 		auto & whichList = theLists[myhash(x)];
 		if (find(begin(whichList), end(whichList), x) != end(whichList)) 		
@@ -74,7 +74,7 @@ public:
 
 		return true;
 	}
-	bool testInsert(const HashedObj & x)
+	bool testInsert(const HashedObj & x) override
 	{
 		auto & whichList = theLists[myhash(x)];
 		if (find(begin(whichList), end(whichList), x) != end(whichList))
@@ -92,7 +92,7 @@ public:
 		return true;
 	}
 
-	bool testInsert(HashedObj && x)
+	bool testInsert(HashedObj && x) override
 	{
 		auto & whichList = theLists[myhash(x)];
 		if (find(begin(whichList), end(whichList), x) != end(whichList))
@@ -110,7 +110,7 @@ public:
 		return true;
 	}
 
-	bool remove(const HashedObj & x)
+	bool remove(const HashedObj & x) override
 	{
 		auto & whichList = theLists[myhash(x)];
 		auto itr = find(begin(whichList), end(whichList), x);

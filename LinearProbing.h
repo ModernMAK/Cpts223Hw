@@ -31,7 +31,7 @@ public:
 		LinearHashTable<HashedObj, HashFunc>::makeEmpty();
 	}
 
-	bool contains(const HashedObj & x) const
+	bool contains(const HashedObj & x) const override
 	{
 		return isActive(findPos(x));
 	}
@@ -43,7 +43,7 @@ public:
 			entry.info = EMPTY;				
 	}
 
-	bool insert(const HashedObj & x)
+	bool insert(const HashedObj & x) override
 	{
 		// Insert x as active
 		int currentPos = findPos(x);
@@ -63,7 +63,7 @@ public:
 		return true;
 	}
 
-	bool insert(HashedObj && x)
+	bool insert(HashedObj && x) override
 	{
 		// Insert x as active
 		int currentPos = findPos(x);
@@ -82,7 +82,7 @@ public:
 
 		return true;
 	}
-	bool testInsert(const HashedObj & x)
+	bool testInsert(const HashedObj & x) override
 	{
 		// Insert x as active
 		int currentPos = findPosTest(x);
@@ -102,7 +102,7 @@ public:
 		return true;
 	}
 
-	bool testInsert(HashedObj && x)
+	bool testInsert(HashedObj && x) override
 	{
 		// Insert x as active
 		int currentPos = findPosTest(x);
@@ -122,7 +122,7 @@ public:
 		return true;
 	}
 
-	bool remove(const HashedObj & x)
+	bool remove(const HashedObj & x) override
 	{
 		int currentPos = findPos(x);
 		if (!isActive(currentPos))
