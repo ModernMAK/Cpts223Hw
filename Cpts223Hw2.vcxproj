@@ -18,6 +18,19 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="HashTableInterface.h" />
+    <ClInclude Include="LinearProbing.h" />
+    <ClInclude Include="QuadraticProbing.h" />
+    <ClInclude Include="SeparateChaining.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="HashTableInterface.cpp" />
+    <ClCompile Include="LinearProbing.cpp" />
+    <ClCompile Include="QuadraticProbing.cpp" />
+    <ClCompile Include="SeparateChaining.cpp" />
+    <ClCompile Include="TestAim1.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{C1210BAC-5E3B-47BC-8590-CA1B6D266A41}</ProjectGuid>
@@ -114,18 +127,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="AbstractJosephus.h" />
-    <ClInclude Include="Game.h" />
-    <ClInclude Include="ListMyJosephus.h" />
-    <ClInclude Include="plotData.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="ElapsedTimeExample.cpp" />
-    <ClCompile Include="plotData.cpp" />
-    <ClCompile Include="TestVectorMyJosephus.cpp" />
-    <ClCompile Include="VectorMyJosephus.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

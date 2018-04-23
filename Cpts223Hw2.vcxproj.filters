@@ -15,54 +15,33 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ListMyJosephus.h">
+    <ClInclude Include="SeparateChaining.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="VectorMyJosephus.h">
+    <ClInclude Include="QuadraticProbing.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Person.h">
+    <ClInclude Include="LinearProbing.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MainLogic.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="plotData.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AbstractJosephus.h">
+    <ClInclude Include="HashTableInterface.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ListMyJosephus.cpp">
+    <ClCompile Include="SeparateChaining.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="VectorMyJosephus.cpp">
+    <ClCompile Include="QuadraticProbing.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Person.cpp">
+    <ClCompile Include="LinearProbing.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ElapsedTimeExample.cpp">
+    <ClCompile Include="TestAim1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TestListMyJosephus.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TestVectorMyJosephus.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="plotData.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AbstractJosephus.cpp">
+    <ClCompile Include="HashTableInterface.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
